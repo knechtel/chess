@@ -1,0 +1,12 @@
+verificar bug no movimento da rei,bispo,rainha(ao escolher a posicao dela mesma da erro)
+
+retirar o Session.isFirstTime
+
+verificar a lista de promoção
+
+O vetor de possiveis caminhos não deve sobrepor a peça
+
+permitir na primeira jogada de cada peão andar duas casas 
+
+invalidar uma jogada que põe o rei em xequemate
+
