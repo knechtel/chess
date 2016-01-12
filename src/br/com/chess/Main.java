@@ -485,32 +485,32 @@ public class Main extends JPanel {
 
 		try {
 			imgTowerWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "towerWhite.png"));
+					.getProperty("user.dir") + "/img/" + "towerWhite.png"));
 			imgPawnWhite = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "pawnWhite.png"));
+					+ "/img/" + "pawnWhite.png"));
 			imgHorseWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "horseWhite.png"));
+					.getProperty("user.dir") + "/img/" + "horseWhite.png"));
 			imgBishopWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "bishopWhite.png"));
+					.getProperty("user.dir") + "/img/" + "bishopWhite.png"));
 			imgTowerWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "towerWhite.png"));
+					.getProperty("user.dir") + "/img/" + "towerWhite.png"));
 			imgQueenWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "QueenWhite.png"));
+					.getProperty("user.dir") + "/img/" + "QueenWhite.png"));
 			imgKingWhite = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "kingWhite.png"));
+					+ "/img/" + "kingWhite.png"));
 			// Black
 			imgPawnBlack = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "pawnBlack.png"));
+					+ "/img/" + "pawnBlack.png"));
 			imgHorseBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "horseBlack.png"));
+					.getProperty("user.dir") + "/img/" + "horseBlack.png"));
 			imgBishopBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "bishopBlack.png"));
+					.getProperty("user.dir") + "/img/" + "bishopBlack.png"));
 			imgTowerBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "towerBlack.png"));
+					.getProperty("user.dir") + "/img/" + "towerBlack.png"));
 			imgQueenBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "queenBlack.png"));
+					.getProperty("user.dir") + "/img/" + "queenBlack.png"));
 			imgKingBlack = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "kingBlack.png"));
+					+ "/img/" + "kingBlack.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -594,32 +594,32 @@ public class Main extends JPanel {
 
 		try {
 			imgTowerWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "towerWhite.png"));
+					.getProperty("user.dir") + "/img/" + "towerWhite.png"));
 			imgPawnWhite = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "pawnWhite.png"));
+					+ "/img/" + "pawnWhite.png"));
 			imgHorseWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "horseWhite.png"));
+					.getProperty("user.dir") + "/img/" + "horseWhite.png"));
 			imgBishopWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "bishopWhite.png"));
+					.getProperty("user.dir") + "/img/" + "bishopWhite.png"));
 			imgTowerWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "towerWhite.png"));
+					.getProperty("user.dir") + "/img/" + "towerWhite.png"));
 			imgQueenWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "QueenWhite.png"));
+					.getProperty("user.dir") + "/img/" + "QueenWhite.png"));
 			imgKingWhite = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "kingWhite.png"));
+					+ "/img/" + "kingWhite.png"));
 			// Black
 			imgPawnBlack = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "pawnBlack.png"));
+					+ "/img/" + "pawnBlack.png"));
 			imgHorseBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "horseBlack.png"));
+					.getProperty("user.dir") + "/img/" + "horseBlack.png"));
 			imgBishopBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "bishopBlack.png"));
+					.getProperty("user.dir") + "/img/" + "bishopBlack.png"));
 			imgTowerBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "towerBlack.png"));
+					.getProperty("user.dir") + "/img/" + "towerBlack.png"));
 			imgQueenBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "queenBlack.png"));
+					.getProperty("user.dir") + "/img/" + "queenBlack.png"));
 			imgKingBlack = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "kingBlack.png"));
+					+ "/img/" + "kingBlack.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();

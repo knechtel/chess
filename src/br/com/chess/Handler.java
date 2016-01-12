@@ -138,7 +138,7 @@ public class Handler implements MouseListener {
 									}
 								}
 
-								// anula posição antiga da peça
+								// anula posiï¿½ï¿½o antiga da peï¿½a
 								chess2[pointRemove.getX()][pointRemove.getY()] = null;
 								main.paint(main.getGraphics());
 
@@ -154,7 +154,7 @@ public class Handler implements MouseListener {
 								chess[p.getX()][p.getY()] = pieceMove;
 								Piece peca = pieceMove;
 								clearChoices();
-								// verifica se é o caso da promoção de um peão
+								// verifica se ï¿½ o caso da promoï¿½ï¿½o de um peï¿½o
 								if (Session.isPlayerOne()) {
 									if (pieceMove instanceof Pawn) {
 										if (p.getY() == 0) {
@@ -242,7 +242,7 @@ public class Handler implements MouseListener {
 										.getY()];
 
 								if (pTwo != null) {
-									// se a posição selecionada retorna uma peça
+									// se a posiï¿½ï¿½o selecionada retorna uma peï¿½a
 									// nao nula
 
 									if (!pTwo.isEnemy()) {
@@ -291,14 +291,14 @@ public class Handler implements MouseListener {
 										} else if (pTwo instanceof Pawn) {
 											pwn = (Pawn) pTwo;
 
-											// //converte a posicao de uma peça
+											// //converte a posicao de uma peï¿½a
 											// na tela
 											// //para uma posicao no tabuleiro
 											// Point p =
 											// Util.parsePositionToIndex(pwn.getX(),
 											// pwn.getY());
 
-											// //pointIndex é a nova posicao no
+											// //pointIndex ï¿½ a nova posicao no
 											// tabuleiro
 											List<Integer> listPositions = pwn
 													.move(pointIndex.getX(),
@@ -526,32 +526,32 @@ public class Handler implements MouseListener {
 
 		try {
 			imgTowerWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "towerWhite.png"));
+					.getProperty("user.dir") + "/img/" + "towerWhite.png"));
 			imgPawnWhite = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "pawnWhite.png"));
+					+ "/img/" + "pawnWhite.png"));
 			imgHorseWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "horseWhite.png"));
+					.getProperty("user.dir") + "/img/" + "horseWhite.png"));
 			imgBishopWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "bishopWhite.png"));
+					.getProperty("user.dir") + "/img/" + "bishopWhite.png"));
 			imgTowerWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "towerWhite.png"));
+					.getProperty("user.dir") + "/img/" + "towerWhite.png"));
 			imgQueenWhite = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "QueenWhite.png"));
+					.getProperty("user.dir") + "/img/" + "QueenWhite.png"));
 			imgKingWhite = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "kingWhite.png"));
+					+ "/img/" + "kingWhite.png"));
 			// Black
 			imgPawnBlack = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "pawnBlack.png"));
+					+ "/img/" + "pawnBlack.png"));
 			imgHorseBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "horseBlack.png"));
+					.getProperty("user.dir") + "/img/" + "horseBlack.png"));
 			imgBishopBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "bishopBlack.png"));
+					.getProperty("user.dir") + "/img/" + "bishopBlack.png"));
 			imgTowerBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "towerBlack.png"));
+					.getProperty("user.dir") + "/img/" + "towerBlack.png"));
 			imgQueenBlack = ImageIO.read(new File(System
-					.getProperty("user.dir") + "\\img\\" + "queenBlack.png"));
+					.getProperty("user.dir") + "/img/" + "queenBlack.png"));
 			imgKingBlack = ImageIO.read(new File(System.getProperty("user.dir")
-					+ "\\img\\" + "kingBlack.png"));
+					+ "/img/" + "kingBlack.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
