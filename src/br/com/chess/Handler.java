@@ -59,166 +59,219 @@ public class Handler implements MouseListener {
 			if (pointIndex != null) {
 
 				if (listIndexPossibleChoices != null) {
+					checkPossibleChoices(pointIndex);
+				} else {
+					doChoice(pointIndex);
+				}
+			}
+		}
+	}
 
-					for (int i = 0; i < listIndexPossibleChoices.size(); i++) {
-						
-						if (i + 1 <= listIndexPossibleChoices.size()) {
-							int xx = listIndexPossibleChoices.get(i);
-							int yy = listIndexPossibleChoices.get(++i);
+	private void doChoice(Point pointIndex) {
 
-							if (pointIndex.getX() == xx
-									&& pointIndex.getY() == yy) {
-								
-								Point position = Util.parseIndexToPosition(xx,
-										yy);
-								int remove_x = pieceMove.getX();
-								int remove_y = pieceMove.getY();
+		Piece[][] chessbord = main.getChessboard();
+		Piece p = chessbord[pointIndex.getX()][pointIndex.getY()];
+		if (p != null) {
+			if (!p.isEnemy()) {
+				movePiece(p,pointIndex);
+			}
+		}
+	}
 
-								pieceMove.setX(position.getX());
-								pieceMove.setY(position.getY());
+	private void movePiece(Piece p,Point pointIndex) {
+		Piece[][] chessbord = main.getChessboard();
+		Bishop b = null;
+		Horse h = null;
+		King k = null;
+		Pawn pwn = null;
+		Queen q = null;
+		Tower t = null;
+		
+		if (p instanceof Bishop) {
+			b = (Bishop) p;
 
-								Point pointRemove = Util.parsePositionToIndex(
-										remove_x, remove_y);
+			List<Integer> listPositions = b.move(pointIndex.getX(),
+					pointIndex.getY(), chessbord);
+			// clearChoices();
 
-								Piece[][] chess2 = main.getChessboard();
+			paintChoices(b, pointIndex.getX(), pointIndex.getY(),
+					listPositions);
+			pieceMove = b;
+		} else if (p instanceof Horse) {
+			h = (Horse) p;
+			List<Integer> listPositions = h.move(pointIndex.getX(),
+					pointIndex.getY(), chessbord);
+			// clearChoices();
+			paintChoices(h, pointIndex.getX(), pointIndex.getY(),
+					listPositions);
+			pieceMove = h;
+		} else if (p instanceof King) {
+			k = (King) p;
+			List<Integer> listPositions = k.move(pointIndex.getX(),
+					pointIndex.getY(), chessbord);
+			// clearChoices();
+			paintChoices(k, pointIndex.getX(), pointIndex.getY(),
+					listPositions);
+			pieceMove = k;
+		} else if (p instanceof Pawn) {
+			pwn = (Pawn) p;
+			List<Integer> listPositions = pwn.move(pointIndex.getX(),
+					pointIndex.getY(), chessbord);
+			// clearChoices();
+			paintChoices(pwn, pointIndex.getX(), pointIndex.getY(),
+					listPositions);
+			pieceMove = pwn;
 
-								Piece newPiece = chess2[xx][yy];
+		} else if (p instanceof Queen) {
+			q = (Queen) p;
 
-								Bishop b = null;
-								Horse h = null;
-								Queen q = null;
-								Tower t = null;
-								@SuppressWarnings("unused")
-								King k = null;
-								if (newPiece instanceof Bishop) {
-									b = (Bishop) newPiece;
-								} else if (newPiece instanceof Horse) {
-									h = (Horse) newPiece;
-								} else if (newPiece instanceof Queen) {
-									q = (Queen) newPiece;
-								} else if (newPiece instanceof Tower) {
-									t = (Tower) newPiece;
-								} else if (newPiece instanceof King) {
-									k = (King) newPiece;
-									xequemate = true;
-								}
+			List<Integer> listPositions = q.move(pointIndex.getX(),
+					pointIndex.getY(), chessbord);
+			// clearChoices();
+			paintChoices(q, pointIndex.getX(), pointIndex.getY(),
+					listPositions);
+			pieceMove = q;
+		} else if (p instanceof Tower) {
+			t = (Tower) p;
+			List<Integer> listPositions = t.move(pointIndex.getX(),
+					pointIndex.getY(), chessbord);
+			paintChoices(t, pointIndex.getX(), pointIndex.getY(),
+					listPositions);
+			pieceMove = t;
 
-								if (b != null) {
-									if (Session.isPlayerOne()) {
-										Session.getListForPromotionPlayerTwo()
-												.add(b);
-									} else {
-										Session.getListForPromotionPlayerOne()
-												.add(b);
-									}
-								} else if (h != null) {
-									if (Session.isPlayerOne()) {
-										Session.getListForPromotionPlayerTwo()
-												.add(h);
-									} else {
-										Session.getListForPromotionPlayerOne()
-												.add(h);
-									}
+		}
 
-								} else if (q != null) {
-									if (Session.isPlayerOne()) {
-										Session.getListForPromotionPlayerTwo()
-												.add(q);
-									} else {
-										Session.getListForPromotionPlayerOne()
-												.add(q);
-									}
-								} else if (t != null) {
-									if (Session.isPlayerOne()) {
-										Session.getListForPromotionPlayerTwo()
-												.add(t);
-									} else {
-										Session.getListForPromotionPlayerOne()
-												.add(t);
-									}
-								}
+		
+	}
 
-								// anula posi��o antiga da pe�a
-								chess2[pointRemove.getX()][pointRemove.getY()] = null;
-								main.paint(main.getGraphics());
+	private void checkPossibleChoices(Point pointIndex) {
 
-								doPaint(pieceMove, position.getX(),
-										position.getY());
+		for (int i = 0; i < listIndexPossibleChoices.size(); i++) {
 
-								// atualiza o tabuleiro
-								Point p = Util.parsePositionToIndex(
-										position.getX(), position.getY());
+			if (i + 1 <= listIndexPossibleChoices.size()) {
+				int xx = listIndexPossibleChoices.get(i);
+				int yy = listIndexPossibleChoices.get(++i);
 
-								Piece[][] chess = main.getChessboard();
+				if (pointIndex.getX() == xx && pointIndex.getY() == yy) {
 
-								chess[p.getX()][p.getY()] = pieceMove;
-								Piece peca = pieceMove;
-								clearChoices();
-								// verifica se � o caso da promo��o de um pe�o
-								if (Session.isPlayerOne()) {
-									if (pieceMove instanceof Pawn) {
-										if (p.getY() == 0) {
-											if (Session
-													.getListForPromotionPlayerTwo()
-													.size() >= 1) {
-												ComboBoxDemo combo = new ComboBoxDemo(
-														this);
-												pieceMove.setEnemy(pieceMove
-														.isEnemy());
-												Session.setPieceMove(pieceMove);
-												Session.setPoint(p);
-												Session.setPointRemove(pointRemove);
-												combo.createAndShowGUI();
-											} else {
-												enviaPeca(
-														peca,
-														pointRemove,
-														p,
-														Session.getListForPromotionPlayerTwo(),
-														xequemate);
-											}
-											Session.setEnableFrame(false);
-											listIndexPossibleChoices = null;
-											break;
-										}
-									}
+					Point position = Util.parseIndexToPosition(xx, yy);
+					int remove_x = pieceMove.getX();
+					int remove_y = pieceMove.getY();
+
+					pieceMove.setX(position.getX());
+					pieceMove.setY(position.getY());
+
+					Point pointRemove = Util.parsePositionToIndex(remove_x,
+							remove_y);
+
+					Piece[][] chess2 = main.getChessboard();
+
+					Piece newPiece = chess2[xx][yy];
+
+					Bishop b = null;
+					Horse h = null;
+					Queen q = null;
+					Tower t = null;
+					@SuppressWarnings("unused")
+					King k = null;
+					if (newPiece instanceof Bishop) {
+						b = (Bishop) newPiece;
+					} else if (newPiece instanceof Horse) {
+						h = (Horse) newPiece;
+					} else if (newPiece instanceof Queen) {
+						q = (Queen) newPiece;
+					} else if (newPiece instanceof Tower) {
+						t = (Tower) newPiece;
+					} else if (newPiece instanceof King) {
+						k = (King) newPiece;
+						xequemate = true;
+					}
+
+					if (b != null) {
+						if (Session.isPlayerOne()) {
+							Session.getListForPromotionPlayerTwo().add(b);
+						} else {
+							Session.getListForPromotionPlayerOne().add(b);
+						}
+					} else if (h != null) {
+						if (Session.isPlayerOne()) {
+							Session.getListForPromotionPlayerTwo().add(h);
+						} else {
+							Session.getListForPromotionPlayerOne().add(h);
+						}
+
+					} else if (q != null) {
+						if (Session.isPlayerOne()) {
+							Session.getListForPromotionPlayerTwo().add(q);
+						} else {
+							Session.getListForPromotionPlayerOne().add(q);
+						}
+					} else if (t != null) {
+						if (Session.isPlayerOne()) {
+							Session.getListForPromotionPlayerTwo().add(t);
+						} else {
+							Session.getListForPromotionPlayerOne().add(t);
+						}
+					}
+
+					// anula posi��o antiga da pe�a
+					chess2[pointRemove.getX()][pointRemove.getY()] = null;
+					main.paint(main.getGraphics());
+
+					doPaint(pieceMove, position.getX(), position.getY());
+
+					// atualiza o tabuleiro
+					Point p = Util.parsePositionToIndex(position.getX(),
+							position.getY());
+
+					Piece[][] chess = main.getChessboard();
+
+					chess[p.getX()][p.getY()] = pieceMove;
+					Piece peca = pieceMove;
+					clearChoices();
+					// verifica se � o caso da promo��o de um pe�o
+					if (Session.isPlayerOne()) {
+						if (pieceMove instanceof Pawn) {
+							if (p.getY() == 0) {
+								if (Session.getListForPromotionPlayerTwo()
+										.size() >= 1) {
+
+									// promoçao de peão
+
+									System.out
+											.println("Promove>>>>>>>>>>>>>>>>>>>");
+									ComboBoxDemo combo = new ComboBoxDemo(this);
+									pieceMove.setEnemy(pieceMove.isEnemy());
+									Session.setPieceMove(pieceMove);
+									Session.setPoint(p);
+									Session.setPointRemove(pointRemove);
+									combo.createAndShowGUI();
 								} else {
-									if (pieceMove instanceof Pawn) {
-										if (p.getY() == 7) {
-											if (Session
-													.getListForPromotionPlayerOne()
-													.size() >= 1) {
-												ComboBoxDemo combo = new ComboBoxDemo(
-														this);
-												pieceMove.setEnemy(pieceMove
-														.isEnemy());
-												Session.setPieceMove(pieceMove);
-												Session.setPoint(p);
-												Session.setPointRemove(pointRemove);
-												combo.createAndShowGUI();
-											}else{
-												enviaPeca(
-														peca,
-														pointRemove,
-														p,
-														Session.getListForPromotionPlayerOne(),
-														xequemate);
-											}
-											listIndexPossibleChoices = null;
-											Session.setEnableFrame(false);
-											break;
-										}
-									}
-								}
-
-								listIndexPossibleChoices = null;
-								if (Session.isPlayerOne()) {
 									enviaPeca(
 											peca,
 											pointRemove,
 											p,
 											Session.getListForPromotionPlayerTwo(),
 											xequemate);
+								}
+								Session.setEnableFrame(false);
+								listIndexPossibleChoices = null;
+								break;
+							}
+						}
+					} else {
+						if (pieceMove instanceof Pawn) {
+							if (p.getY() == 7) {
+								if (Session.getListForPromotionPlayerOne()
+										.size() >= 1) {
+									System.out.println("promove >>>>>>>");
+
+									ComboBoxDemo combo = new ComboBoxDemo(this);
+									pieceMove.setEnemy(pieceMove.isEnemy());
+									Session.setPieceMove(pieceMove);
+									Session.setPoint(p);
+									Session.setPointRemove(pointRemove);
+									combo.createAndShowGUI();
 								} else {
 									enviaPeca(
 											peca,
@@ -227,269 +280,138 @@ public class Handler implements MouseListener {
 											Session.getListForPromotionPlayerOne(),
 											xequemate);
 								}
-
-								if (xequemate) {
-									JOptionPane.showMessageDialog(null,
-											"Xequemate, fim de jogo!");
-									Main.closeConnection();
-								}
+								listIndexPossibleChoices = null;
 								Session.setEnableFrame(false);
 								break;
-
-							} else {
-								Piece[][] chessbordTwo = main.getChessboard();
-								Piece pTwo = chessbordTwo[pointIndex.getX()][pointIndex
-										.getY()];
-
-								if (pTwo != null) {
-									// se a posi��o selecionada retorna uma pe�a
-									// nao nula
-
-									if (!pTwo.isEnemy()) {
-
-										Bishop b = null;
-										Horse h = null;
-										King k = null;
-										Pawn pwn = null;
-										Queen q = null;
-										Tower t = null;
-										if (pTwo instanceof Bishop) {
-											b = (Bishop) pTwo;
-
-											List<Integer> listPositions = b
-													.move(pointIndex.getX(),
-															pointIndex.getY(),
-															chessbordTwo);
-											clearChoices();
-											paintChoices(b, pointIndex.getX(),
-													pointIndex.getY(),
-													listPositions);
-											pieceMove = b;
-										} else if (pTwo instanceof Horse) {
-											h = (Horse) pTwo;
-											List<Integer> listPositions = h
-													.move(pointIndex.getX(),
-															pointIndex.getY(),
-															chessbordTwo);
-											clearChoices();
-											paintChoices(h, pointIndex.getX(),
-													pointIndex.getY(),
-													listPositions);
-											pieceMove = h;
-										} else if (pTwo instanceof King) {
-											k = (King) pTwo;
-
-											List<Integer> listPositions = k
-													.move(pointIndex.getX(),
-															pointIndex.getY(),
-															chessbordTwo);
-											clearChoices();
-											paintChoices(k, pointIndex.getX(),
-													pointIndex.getY(),
-													listPositions);
-											pieceMove = k;
-										} else if (pTwo instanceof Pawn) {
-											pwn = (Pawn) pTwo;
-
-											// //converte a posicao de uma pe�a
-											// na tela
-											// //para uma posicao no tabuleiro
-											// Point p =
-											// Util.parsePositionToIndex(pwn.getX(),
-											// pwn.getY());
-
-											// //pointIndex � a nova posicao no
-											// tabuleiro
-											List<Integer> listPositions = pwn
-													.move(pointIndex.getX(),
-															pointIndex.getY(),
-															chessbordTwo);
-
-											// enviaPeca(p, pointIndex);
-											clearChoices();
-											paintChoices(pwn,
-													pointIndex.getX(),
-													pointIndex.getY(),
-													listPositions);
-
-											pieceMove = pwn;
-
-										} else if (pTwo instanceof Queen) {
-											q = (Queen) pTwo;
-											List<Integer> listPositions = q
-													.move(pointIndex.getX(),
-															pointIndex.getY(),
-															chessbordTwo);
-											clearChoices();
-											paintChoices(q, pointIndex.getX(),
-													pointIndex.getY(),
-													listPositions);
-											pieceMove = q;
-
-										} else if (pTwo instanceof Tower) {
-											t = (Tower) pTwo;
-											
-											List<Integer> listPositions = t
-													.move(pointIndex.getX(),
-															pointIndex.getY(),
-															chessbordTwo);
-											clearChoices();
-											paintChoices(t, pointIndex.getX(),
-													pointIndex.getY(),
-													listPositions);
-											pieceMove = t;
-										}
-									}
-								}
-							}// final do else
-						}
-					}// final do for
-				} else {
-					// listIndex null
-
-					Piece[][] chessbord = main.getChessboard();
-					Piece p = chessbord[pointIndex.getX()][pointIndex.getY()];
-					if (p != null) {
-						if (!p.isEnemy()) {
-
-							Bishop b = null;
-
-							Horse h = null;
-
-							King k = null;
-							Pawn pwn = null;
-
-							Queen q = null;
-
-							Tower t = null;
-							if (p instanceof Bishop) {
-								b = (Bishop) p;
-
-								List<Integer> listPositions = b.move(
-										pointIndex.getX(), pointIndex.getY(),
-										chessbord);
-								// clearChoices();
-
-								paintChoices(b, pointIndex.getX(),
-										pointIndex.getY(), listPositions);
-								pieceMove = b;
-							} else if (p instanceof Horse) {
-								h = (Horse) p;
-								List<Integer> listPositions = h.move(
-										pointIndex.getX(), pointIndex.getY(),
-										chessbord);
-								// clearChoices();
-								paintChoices(h, pointIndex.getX(),
-										pointIndex.getY(), listPositions);
-								pieceMove = h;
-							} else if (p instanceof King) {
-								k = (King) p;
-								List<Integer> listPositions = k.move(
-										pointIndex.getX(), pointIndex.getY(),
-										chessbord);
-								// clearChoices();
-								paintChoices(k, pointIndex.getX(),
-										pointIndex.getY(), listPositions);
-								pieceMove = k;
-							} else if (p instanceof Pawn) {
-								pwn = (Pawn) p;
-								List<Integer> listPositions = pwn.move(
-										pointIndex.getX(), pointIndex.getY(),
-										chessbord);
-								// clearChoices();
-								paintChoices(pwn, pointIndex.getX(),
-										pointIndex.getY(), listPositions);
-								pieceMove = pwn;
-
-							} else if (p instanceof Queen) {
-								q = (Queen) p;
-
-								List<Integer> listPositions = q.move(
-										pointIndex.getX(), pointIndex.getY(),
-										chessbord);
-								// clearChoices();
-								paintChoices(q, pointIndex.getX(),
-										pointIndex.getY(), listPositions);
-								pieceMove = q;
-							} else if (p instanceof Tower) {
-								t = (Tower) p;
-								List<Integer> listPositions = t.move(
-										pointIndex.getX(), pointIndex.getY(),
-										chessbord);
-								paintChoices(t, pointIndex.getX(),
-										pointIndex.getY(), listPositions);
-								pieceMove = t;
-
 							}
 						}
 					}
-				}
+
+					listIndexPossibleChoices = null;
+					if (Session.isPlayerOne()) {
+						enviaPeca(peca, pointRemove, p,
+								Session.getListForPromotionPlayerTwo(),
+								xequemate);
+					} else {
+						enviaPeca(peca, pointRemove, p,
+								Session.getListForPromotionPlayerOne(),
+								xequemate);
+					}
+
+					if (xequemate) {
+						JOptionPane.showMessageDialog(null,
+								"Xequemate, fim de jogo!");
+						Main.closeConnection();
+					}
+					Session.setEnableFrame(false);
+					break;
+
+				} else {
+					Piece[][] chessbordTwo = main.getChessboard();
+					Piece pTwo = chessbordTwo[pointIndex.getX()][pointIndex
+							.getY()];
+
+					if (pTwo != null) {
+						// se a posi��o selecionada retorna uma pe�a
+						// nao nula
+
+						if (!pTwo.isEnemy()) {
+
+							Bishop b = null;
+							Horse h = null;
+							King k = null;
+							Pawn pwn = null;
+							Queen q = null;
+							Tower t = null;
+							if (pTwo instanceof Bishop) {
+								b = (Bishop) pTwo;
+
+								List<Integer> listPositions = b.move(
+										pointIndex.getX(), pointIndex.getY(),
+										chessbordTwo);
+								clearChoices();
+								paintChoices(b, pointIndex.getX(),
+										pointIndex.getY(), listPositions);
+								pieceMove = b;
+							} else if (pTwo instanceof Horse) {
+								h = (Horse) pTwo;
+								List<Integer> listPositions = h.move(
+										pointIndex.getX(), pointIndex.getY(),
+										chessbordTwo);
+								clearChoices();
+								paintChoices(h, pointIndex.getX(),
+										pointIndex.getY(), listPositions);
+								pieceMove = h;
+							} else if (pTwo instanceof King) {
+								k = (King) pTwo;
+
+								List<Integer> listPositions = k.move(
+										pointIndex.getX(), pointIndex.getY(),
+										chessbordTwo);
+								clearChoices();
+								paintChoices(k, pointIndex.getX(),
+										pointIndex.getY(), listPositions);
+								pieceMove = k;
+							} else if (pTwo instanceof Pawn) {
+								pwn = (Pawn) pTwo;
+
+								// //converte a posicao de uma pe�a
+								// na tela
+								// //para uma posicao no tabuleiro
+								// Point p =
+								// Util.parsePositionToIndex(pwn.getX(),
+								// pwn.getY());
+
+								// //pointIndex � a nova posicao no
+								// tabuleiro
+								List<Integer> listPositions = pwn.move(
+										pointIndex.getX(), pointIndex.getY(),
+										chessbordTwo);
+
+								// enviaPeca(p, pointIndex);
+								clearChoices();
+								paintChoices(pwn, pointIndex.getX(),
+										pointIndex.getY(), listPositions);
+
+								pieceMove = pwn;
+
+							} else if (pTwo instanceof Queen) {
+								q = (Queen) pTwo;
+								List<Integer> listPositions = q.move(
+										pointIndex.getX(), pointIndex.getY(),
+										chessbordTwo);
+								clearChoices();
+								paintChoices(q, pointIndex.getX(),
+										pointIndex.getY(), listPositions);
+								pieceMove = q;
+
+							} else if (pTwo instanceof Tower) {
+								t = (Tower) pTwo;
+
+								List<Integer> listPositions = t.move(
+										pointIndex.getX(), pointIndex.getY(),
+										chessbordTwo);
+								clearChoices();
+								paintChoices(t, pointIndex.getX(),
+										pointIndex.getY(), listPositions);
+								pieceMove = t;
+							}
+						}
+					}
+				}// final do else
 			}
-		}
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		}// final do for
 
 	}
 
 	public void clearChoices() {
-		// Graphics2D g2 = (Graphics2D) main.getGraphics2d();
-		// List<Square> listSquare = main.getListSquare();
-		//
-		// for (int i = 0; i < listIndex.size(); i++) {
-		// if (i + 1 <= listIndex.size()) {
-		// int xx = listIndex.get(i);
-		// int yy = listIndex.get(++i);
-		// int[] square = Util.parseIndexToSquare(xx, yy);
-		// for (Square s : listSquare) {
-		// if (s.getX() == square[0] && s.getY() == square[1]) {
-		// g2.setPaint(s.getColor());
-		// g2.fill(new Rectangle2D.Double(s.getX(), s.getY(), 50,
-		// 50));
-		// // Point point = Util.parseIndexToPosition(xx, yy);
-		// // Piece[][] chessbord = main.getChessboard();
-		// // for (int ii = 0; ii < chessbord.length; ii++) {
-		// // for (int jj = 0; jj < chessbord.length; jj++) {
-		// // Piece piece = chessbord[ii][jj];
-		// // if (piece.getX() == point.getX()
-		// // && piece.getY() == point.getX()) {
-		// //
-		// // }
-		// // }
-		// // }
-		// }
-		// }
-		//
-		// }
-		// }
-		// g2.dispose();
 		main.paint(main.getGraphics());
 
 	}
 
 	public void paintChoices(Piece piece, int x, int y,
 			List<Integer> listPositions) {
-		Graphics2D g2 = (Graphics2D) main.getGraphics2d();
+		Graphics2D g = (Graphics2D) main.getGraphics2d();
 		// refazer esse metodo
 		listIndexPossibleChoices = new ArrayList<Integer>();
 		for (int i = 0; i < listPositions.size(); i++) {
@@ -500,12 +422,26 @@ public class Handler implements MouseListener {
 
 				listIndexPossibleChoices.add(xx);
 				listIndexPossibleChoices.add(yy);
-				g2.setColor(Color.GREEN);
-				g2.fill(new Rectangle2D.Double(var[0], var[1], 50, 50));
-
+				g.setColor(Color.GREEN);
+				g.fill(new Rectangle2D.Double(var[0], var[1], 50, 50));
 			}
 		}
-		g2.dispose();
+
+		for (int i = 0; i < listIndexPossibleChoices.size(); i++) {
+			int xx = listIndexPossibleChoices.get(i);
+			int yy = listIndexPossibleChoices.get(++i);
+
+			if (main.getChessboard()[xx][yy] != null) {
+				int[] var = Util.parseIndexToSquare(xx, yy);
+				g.setColor(Color.GREEN);
+				g.fill(new Rectangle2D.Double(var[0], var[1], 50, 50));
+
+				Piece piece2 = main.getChessboard()[xx][yy];
+				Config.drawPiecePossibleChoice(piece2, g);
+			}
+
+		}
+		g.dispose();
 
 	}
 
@@ -646,7 +582,6 @@ public class Handler implements MouseListener {
 
 	}
 
-
 	public void enviaPeca(Piece piece, Point point, Point newPoint,
 			List<Piece> listForPromotion, boolean xequemate) {
 
@@ -689,4 +624,27 @@ public class Handler implements MouseListener {
 		this.main = main;
 	}
 
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
 }

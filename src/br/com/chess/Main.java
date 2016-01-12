@@ -706,11 +706,11 @@ public class Main extends JPanel {
 		client.setMain(main);
 
 		if (Session.isPlayerOne()) {
-			f = new JFrame("- jogar com as pe�as pretas -");
+			f = new JFrame("- jogar com as peças pretas -");
 			Session.setFrame(f);
 
 		} else {
-			f = new JFrame("- Jogar com as Pe�as Brancas - ");
+			f = new JFrame("- Jogar com as Peças Brancas - ");
 			Session.setFrame(f);
 
 		}

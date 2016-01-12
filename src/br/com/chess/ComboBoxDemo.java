@@ -118,14 +118,14 @@ public class ComboBoxDemo extends JPanel {
 		}
 
 		// Set up the UI for selecting a pattern.
-		JLabel patternLabel1 = new JLabel("Selecione uma peça para ");
+		JLabel patternLabel1 = new JLabel("Selecione uma peï¿½a para ");
 		JLabel patternLabel2 = new JLabel("voltar ao tabuleiro:");
 
 		final JComboBox patternList = new JComboBox(listModel);
 		patternList.setEditable(true);
 
 		result = new JLabel(" ");
-		JButton buttonEnviar = new JButton("Ënviar");
+		JButton buttonEnviar = new JButton("Enviar");
 		buttonEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				Object piece = patternList.getSelectedItem();
@@ -273,7 +273,7 @@ public class ComboBoxDemo extends JPanel {
 
 	public void createAndShowGUI() {
 		// Create and set up the window.
-		frame = new JFrame("ComboBoxDemo2");
+		frame = new JFrame("_PromoÃ§Ã£o :)");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Create and set up the content pane.

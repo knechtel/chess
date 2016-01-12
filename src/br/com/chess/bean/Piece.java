@@ -1,5 +1,6 @@
 package br.com.chess.bean;
 
+import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 public class Piece implements Serializable {
@@ -10,6 +11,7 @@ public class Piece implements Serializable {
 	private Integer x;
 	private Integer y;
 	private boolean enemy;
+	
 	
 	public Integer getX() {
 		return x;
@@ -29,6 +31,7 @@ public class Piece implements Serializable {
 	public boolean isEnemy() {
 		return enemy;
 	}
+
 	
 
 }
