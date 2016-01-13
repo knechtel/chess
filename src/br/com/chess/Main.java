@@ -29,7 +29,7 @@ import br.com.chess.bean.Tower;
 import br.com.chess.client.Client;
 import br.com.chess.protocolo.Message;
 
-//test
+
 
 public class Main extends JPanel {
 	/**
@@ -47,393 +47,16 @@ public class Main extends JPanel {
 		playerOne = client.isPlayerOne();
 		chessboard = new Piece[8][8];
 		Session.setPlayerOne(playerOne);
+		Session.setCheessBoard(chessboard);
+		
 		if (playerOne) {
-			{
-				Piece towerOne = new Tower();
-				towerOne.setX(5);
-				towerOne.setY(5);
-				towerOne.setEnemy(true);
-				chessboard[0][0] = towerOne;
-
-				Piece horseOne = new Horse();
-				horseOne.setX(55);
-				horseOne.setY(5);
-				horseOne.setEnemy(true);
-				chessboard[1][0] = horseOne;
-
-				Piece bishopOne = new Bishop();
-				bishopOne.setX(105);
-				bishopOne.setY(5);
-				bishopOne.setEnemy(true);
-				chessboard[2][0] = bishopOne;
-
-				Piece king = new King();
-				king.setX(155);
-				king.setY(5);
-				king.setEnemy(true);
-				chessboard[3][0] = king;
-
-				Piece queen = new Queen();
-				queen.setX(205);
-				queen.setY(5);
-				queen.setEnemy(true);
-				chessboard[4][0] = queen;
-
-				Piece bishopTwo = new Bishop();
-				bishopTwo.setX(255);
-				bishopTwo.setY(5);
-				bishopTwo.setEnemy(true);
-				chessboard[5][0] = bishopTwo;
-
-				Piece horseTwo = new Horse();
-				horseTwo.setX(305);
-				horseTwo.setY(5);
-				horseTwo.setEnemy(true);
-				chessboard[6][0] = horseTwo;
-
-				Piece towerTwo = new Tower();
-				towerTwo.setX(355);
-				towerTwo.setY(5);
-				towerTwo.setEnemy(true);
-				chessboard[7][0] = towerTwo;
-
-				Piece pawnOne = new Pawn();
-				pawnOne.setX(5);
-				pawnOne.setY(55);
-				pawnOne.setEnemy(true);
-				chessboard[0][1] = pawnOne;
-
-				Piece pawnTwo = new Pawn();
-				pawnTwo.setX(55);
-				pawnTwo.setY(55);
-				pawnTwo.setEnemy(true);
-				chessboard[1][1] = pawnTwo;
-
-				Piece pawnThree = new Pawn();
-				pawnThree.setX(105);
-				pawnThree.setY(55);
-				pawnThree.setEnemy(true);
-				chessboard[2][1] = pawnThree;
-
-				Piece pawnFour = new Pawn();
-				pawnFour.setX(155);
-				pawnFour.setY(55);
-				pawnFour.setEnemy(true);
-				chessboard[3][1] = pawnFour;
-
-				Piece pawnFive = new Pawn();
-				pawnFive.setX(205);
-				pawnFive.setY(55);
-				pawnFive.setEnemy(true);
-				chessboard[4][1] = pawnFive;
-
-				Piece pawnSix = new Pawn();
-				pawnSix.setX(255);
-				pawnSix.setY(55);
-				pawnSix.setEnemy(true);
-				chessboard[5][1] = pawnSix;
-
-				Piece pawnSeven = new Pawn();
-				pawnSeven.setX(305);
-				pawnSeven.setY(55);
-				pawnSeven.setEnemy(true);
-				chessboard[6][1] = pawnSeven;
-
-				Piece pawnEight = new Pawn();
-				pawnEight.setX(355);
-				pawnEight.setY(55);
-				pawnEight.setEnemy(true);
-				chessboard[7][1] = pawnEight;
-
-			}
-
-			{
-
-				Piece towerOne = new Tower();
-				towerOne.setX(5);
-				towerOne.setY(355);
-				chessboard[0][7] = towerOne;
-
-				Piece horseOne = new Horse();
-				horseOne.setX(55);
-				horseOne.setY(355);
-				chessboard[1][7] = horseOne;
-
-				Piece bishopOne = new Bishop();
-				bishopOne.setX(105);
-				bishopOne.setY(355);
-				chessboard[2][7] = bishopOne;
-
-				Piece king = new King();
-				king.setX(155);
-				king.setY(355);
-				chessboard[3][7] = king;
-
-				Piece queen = new Queen();
-				queen.setX(205);
-				queen.setY(355);
-				chessboard[4][7] = queen;
-
-				Piece bishopTwo = new Bishop();
-				bishopTwo.setX(255);
-				bishopTwo.setY(355);
-				chessboard[5][7] = bishopTwo;
-
-				Piece horseTwo = new Horse();
-				horseTwo.setX(305);
-				horseTwo.setY(355);
-				chessboard[6][7] = horseTwo;
-
-				Piece towerTwo = new Tower();
-				towerTwo.setX(355);
-				towerTwo.setY(355);
-				chessboard[7][7] = towerTwo;
-
-				Piece pawnOne = new Pawn();
-				pawnOne.setX(5);
-				pawnOne.setY(305);
-				chessboard[0][6] = pawnOne;
-
-				Piece pawnTwo = new Pawn();
-				pawnTwo.setX(55);
-				pawnTwo.setY(305);
-				chessboard[1][6] = pawnTwo;
-
-				Piece pawnThree = new Pawn();
-				pawnThree.setX(105);
-				pawnThree.setY(305);
-				chessboard[2][6] = pawnThree;
-
-				Piece pawnFour = new Pawn();
-				pawnFour.setX(155);
-				pawnFour.setY(305);
-				chessboard[3][6] = pawnFour;
-
-				Piece pawnFive = new Pawn();
-				pawnFive.setX(205);
-				pawnFive.setY(305);
-				chessboard[4][6] = pawnFive;
-
-				Piece pawnSix = new Pawn();
-				pawnSix.setX(255);
-				pawnSix.setY(305);
-				chessboard[5][6] = pawnSix;
-
-				Piece pawnSeven = new Pawn();
-				pawnSeven.setX(305);
-				pawnSeven.setY(305);
-				chessboard[6][6] = pawnSeven;
-
-				Piece pawnEight = new Pawn();
-				pawnEight.setX(355);
-				pawnEight.setY(305);
-				chessboard[7][6] = pawnEight;
-
-			}
+			Config.doConfigPlayerOne();
 		} else {
-			{
-				Piece towerOne = new Tower();
-				towerOne.setX(5);
-				towerOne.setY(5);
-
-				chessboard[0][0] = towerOne;
-
-				Piece horseOne = new Horse();
-				horseOne.setX(55);
-				horseOne.setY(5);
-
-				chessboard[1][0] = horseOne;
-
-				Piece bishopOne = new Bishop();
-				bishopOne.setX(105);
-				bishopOne.setY(5);
-
-				chessboard[2][0] = bishopOne;
-
-				Piece king = new King();
-				king.setX(155);
-				king.setY(5);
-
-				chessboard[3][0] = king;
-
-				Piece queen = new Queen();
-				queen.setX(205);
-				queen.setY(5);
-
-				chessboard[4][0] = queen;
-
-				Piece bishopTwo = new Bishop();
-				bishopTwo.setX(255);
-				bishopTwo.setY(5);
-
-				chessboard[5][0] = bishopTwo;
-
-				Piece horseTwo = new Horse();
-				horseTwo.setX(305);
-				horseTwo.setY(5);
-
-				chessboard[6][0] = horseTwo;
-
-				Piece towerTwo = new Tower();
-				towerTwo.setX(355);
-				towerTwo.setY(5);
-
-				chessboard[7][0] = towerTwo;
-
-				Piece pawnOne = new Pawn();
-				pawnOne.setX(5);
-				pawnOne.setY(55);
-
-				chessboard[0][1] = pawnOne;
-
-				Piece pawnTwo = new Pawn();
-				pawnTwo.setX(55);
-				pawnTwo.setY(55);
-
-				chessboard[1][1] = pawnTwo;
-
-				Piece pawnThree = new Pawn();
-				pawnThree.setX(105);
-				pawnThree.setY(55);
-
-				chessboard[2][1] = pawnThree;
-
-				Piece pawnFour = new Pawn();
-				pawnFour.setX(155);
-				pawnFour.setY(55);
-
-				chessboard[3][1] = pawnFour;
-
-				Piece pawnFive = new Pawn();
-				pawnFive.setX(205);
-				pawnFive.setY(55);
-
-				chessboard[4][1] = pawnFive;
-
-				Piece pawnSix = new Pawn();
-				pawnSix.setX(255);
-				pawnSix.setY(55);
-
-				chessboard[5][1] = pawnSix;
-
-				Piece pawnSeven = new Pawn();
-				pawnSeven.setX(305);
-				pawnSeven.setY(55);
-
-				chessboard[6][1] = pawnSeven;
-
-				Piece pawnEight = new Pawn();
-				pawnEight.setX(355);
-				pawnEight.setY(55);
-
-				chessboard[7][1] = pawnEight;
-
-			}
-
-			{
-
-				Piece towerOne = new Tower();
-				towerOne.setX(5);
-				towerOne.setY(355);
-				towerOne.setEnemy(true);
-				chessboard[0][7] = towerOne;
-
-				Piece horseOne = new Horse();
-				horseOne.setX(55);
-				horseOne.setY(355);
-				horseOne.setEnemy(true);
-				chessboard[1][7] = horseOne;
-
-				Piece bishopOne = new Bishop();
-				bishopOne.setX(105);
-				bishopOne.setY(355);
-				bishopOne.setEnemy(true);
-				chessboard[2][7] = bishopOne;
-
-				Piece king = new King();
-				king.setX(155);
-				king.setY(355);
-				king.setEnemy(true);
-				chessboard[3][7] = king;
-
-				Piece queen = new Queen();
-				queen.setX(205);
-				queen.setY(355);
-				queen.setEnemy(true);
-				chessboard[4][7] = queen;
-
-				Piece bishopTwo = new Bishop();
-				bishopTwo.setX(255);
-				bishopTwo.setY(355);
-				bishopTwo.setEnemy(true);
-				chessboard[5][7] = bishopTwo;
-
-				Piece horseTwo = new Horse();
-				horseTwo.setX(305);
-				horseTwo.setY(355);
-				horseTwo.setEnemy(true);
-				chessboard[6][7] = horseTwo;
-
-				Piece towerTwo = new Tower();
-				towerTwo.setX(355);
-				towerTwo.setY(355);
-				towerTwo.setEnemy(true);
-				chessboard[7][7] = towerTwo;
-
-				Piece pawnOne = new Pawn();
-				pawnOne.setX(5);
-				pawnOne.setY(305);
-				pawnOne.setEnemy(true);
-				chessboard[0][6] = pawnOne;
-
-				Piece pawnTwo = new Pawn();
-				pawnTwo.setX(55);
-				pawnTwo.setY(305);
-				pawnTwo.setEnemy(true);
-				chessboard[1][6] = pawnTwo;
-
-				Piece pawnThree = new Pawn();
-				pawnThree.setX(105);
-				pawnThree.setY(305);
-				pawnThree.setEnemy(true);
-				chessboard[2][6] = pawnThree;
-
-				Piece pawnFour = new Pawn();
-				pawnFour.setX(155);
-				pawnFour.setY(305);
-				pawnFour.setEnemy(true);
-				chessboard[3][6] = pawnFour;
-
-				Piece pawnFive = new Pawn();
-				pawnFive.setX(205);
-				pawnFive.setY(305);
-				pawnFive.setEnemy(true);
-				chessboard[4][6] = pawnFive;
-
-				Piece pawnSix = new Pawn();
-				pawnSix.setX(255);
-				pawnSix.setY(305);
-				pawnSix.setEnemy(true);
-				chessboard[5][6] = pawnSix;
-
-				Piece pawnSeven = new Pawn();
-				pawnSeven.setX(305);
-				pawnSeven.setY(305);
-				pawnSeven.setEnemy(true);
-				chessboard[6][6] = pawnSeven;
-
-				Piece pawnEight = new Pawn();
-				pawnEight.setX(355);
-				pawnEight.setY(305);
-				pawnEight.setEnemy(true);
-				chessboard[7][6] = pawnEight;
-
-			}
-
+			Config.doConfigPlayerTwo();
 		}
 
 	}
-
+	
 	public void paintComponent(Graphics g) {
 
 		Graphics2D g2 = (Graphics2D) g;
@@ -689,8 +312,7 @@ public class Main extends JPanel {
 		return (Graphics2D) getGraphics();
 	}
 
-	public static void main(String args[]) {
-
+	private static void execute(){
 		Client client = new Client();
 
 		JFrame f = null;
@@ -717,7 +339,6 @@ public class Main extends JPanel {
 
 		f.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				Main.closeConnection();
 				System.exit(0);
 
 			}
@@ -732,8 +353,9 @@ public class Main extends JPanel {
 		f.add(main);
 		Handler h = new Handler(main);
 		f.addMouseListener(h);
-	}
 
+	}
+	
 	public void setClient(Client client) {
 		this.client = client;
 	}
@@ -758,26 +380,9 @@ public class Main extends JPanel {
 		return chessboard;
 	}
 
-	public static void closeConnection() {
-		Message dataMatrix = new Message();
-		dataMatrix.setEndOfGame(true);
-		
-		Socket socketCliente = Client.getServSocket();
-		ObjectOutputStream output;
-
-		dataMatrix.setDestino(Session.getDestination());
-		dataMatrix.setOrigem(Session.getOrigin());
-
-		try {
-			output = new ObjectOutputStream(socketCliente.getOutputStream());
-			output.flush();
-			output.writeObject(dataMatrix);
-			output.flush();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+	public static void main(String args[]) {
+		execute();
 	}
+
 	
 }

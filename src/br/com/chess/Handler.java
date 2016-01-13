@@ -300,7 +300,6 @@ public class Handler implements MouseListener {
 					if (xequemate) {
 						JOptionPane.showMessageDialog(null,
 								"Xequemate, fim de jogo!");
-						Main.closeConnection();
 					}
 					Session.setEnableFrame(false);
 					break;

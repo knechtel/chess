@@ -22,6 +22,8 @@ public class Session {
 	private static Point pointRemove;
 	private static JFrame frame;
 	private static Integer cont = 0;
+	private static Piece[][] cheessBoard = new Piece[8][8];
+	
 
 	public static Integer getCont() {
 		cont++;
@@ -123,6 +125,14 @@ public class Session {
 
 	public static JFrame getFrame() {
 		return frame;
+	}
+
+	public static Piece[][] getCheessBoard() {
+		return cheessBoard;
+	}
+
+	public static void setCheessBoard(Piece[][] cheessBoard) {
+		Session.cheessBoard = cheessBoard;
 	}
 
 }
