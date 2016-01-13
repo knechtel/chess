@@ -14,6 +14,11 @@ public class Square {
 		this.y = y;
 		this.color = color;
 	}
+	
+	public Square(){
+		
+	}
+	
 	public Integer getX() {
 		return x;
 	}

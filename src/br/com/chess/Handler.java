@@ -59,8 +59,10 @@ public class Handler implements MouseListener {
 			if (pointIndex != null) {
 
 				if (listIndexPossibleChoices != null) {
+					//pinta as rotas possiveis da peça no tabuleiro
 					checkPossibleChoices(pointIndex);
 				} else {
+					//realiza movimento
 					doChoice(pointIndex);
 				}
 			}
@@ -164,9 +166,9 @@ public class Handler implements MouseListener {
 					Point pointRemove = Util.parsePositionToIndex(remove_x,
 							remove_y);
 
-					Piece[][] chess2 = main.getChessboard();
+					Piece[][] cheesBoard = main.getChessboard();
 
-					Piece newPiece = chess2[xx][yy];
+					Piece newPiece = cheesBoard[xx][yy];
 
 					Bishop b = null;
 					Horse h = null;
@@ -215,7 +217,7 @@ public class Handler implements MouseListener {
 					}
 
 					// anula posi��o antiga da pe�a
-					chess2[pointRemove.getX()][pointRemove.getY()] = null;
+					cheesBoard[pointRemove.getX()][pointRemove.getY()] = null;
 					main.paint(main.getGraphics());
 
 					doPaint(pieceMove, position.getX(), position.getY());
@@ -237,9 +239,6 @@ public class Handler implements MouseListener {
 										.size() >= 1) {
 
 									// promoçao de peão
-
-									System.out
-											.println("Promove>>>>>>>>>>>>>>>>>>>");
 									ComboBoxDemo combo = new ComboBoxDemo(this);
 									pieceMove.setEnemy(pieceMove.isEnemy());
 									Session.setPieceMove(pieceMove);
@@ -418,12 +417,12 @@ public class Handler implements MouseListener {
 			if (i + 1 <= listPositions.size()) {
 				int xx = listPositions.get(i);
 				int yy = listPositions.get(++i);
-				int[] var = Util.parseIndexToSquare(xx, yy);
+				Square sq = Util.parseIndexToSquare(xx, yy);
 
 				listIndexPossibleChoices.add(xx);
 				listIndexPossibleChoices.add(yy);
 				g.setColor(Color.GREEN);
-				g.fill(new Rectangle2D.Double(var[0], var[1], 50, 50));
+				g.fill(new Rectangle2D.Double(sq.getX(), sq.getY(), 50, 50));
 			}
 		}
 
@@ -432,9 +431,9 @@ public class Handler implements MouseListener {
 			int yy = listIndexPossibleChoices.get(++i);
 
 			if (main.getChessboard()[xx][yy] != null) {
-				int[] var = Util.parseIndexToSquare(xx, yy);
+				Square sq = Util.parseIndexToSquare(xx, yy);
 				g.setColor(Color.GREEN);
-				g.fill(new Rectangle2D.Double(var[0], var[1], 50, 50));
+				g.fill(new Rectangle2D.Double(sq.getX(), sq.getY(), 50, 50));
 
 				Piece piece2 = main.getChessboard()[xx][yy];
 				Config.drawPiecePossibleChoice(piece2, g);
@@ -525,38 +524,13 @@ public class Handler implements MouseListener {
 		Graphics2D g2 = (Graphics2D) main.getGraphics2d();
 		List<Square> listSquare = main.getListSquare();
 
-		// remove um inimigo
-		// for (Square s : listSquare) {
-		// if (s.getX() == newX-5 && s.getY() == newY-5) {
-
-		// g2.setPaint(s.getColor());
-		//
-		// g2.fill(new Rectangle2D.Double(newX-5,
-		// newY-5, 50, 50));
-		// break;
-		// }
-		//
-		// }
-		// pinta o lugar anterior da peca
-		// int[] var = Util.parsePositionToIndex(piece.getX(), piece.getY());
-		// int[] var2 = Util.parseIndexToSquare(var[0], var[1]);
-		// for (Square s : listSquare) {
-		// if (s.getX() == var2[0] && s.getY() == var2[1]) {
-		// s.setColor(Color.blue);
-		// g2.setPaint(s.getColor());
-		// g2.fill(new Rectangle2D.Double(s.getX(), s.getY(), 50,
-		// 50));
-		// System.out.println("pintou square");
-		// }
-		// }
-
 		for (int i = 0; i < listIndexPossibleChoices.size(); i++) {
 			if (i + 1 <= listIndexPossibleChoices.size()) {
 				int xx = listIndexPossibleChoices.get(i);
 				int yy = listIndexPossibleChoices.get(++i);
-				int[] square = Util.parseIndexToSquare(xx, yy);
+				Square square = Util.parseIndexToSquare(xx, yy);
 				for (Square s : listSquare) {
-					if (s.getX() == square[0] && s.getY() == square[1]) {
+					if (s.getX() == square.getX() && s.getY() == square.getY()) {
 						g2.setPaint(s.getColor());
 						g2.fill(new Rectangle2D.Double(s.getX(), s.getY(), 50,
 								50));

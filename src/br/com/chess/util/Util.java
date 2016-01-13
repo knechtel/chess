@@ -2,6 +2,7 @@ package br.com.chess.util;
 
 import br.com.chess.bean.Piece;
 import br.com.chess.bean.Point;
+import br.com.chess.bean.Square;
 
 public class Util {
 
@@ -59,59 +60,60 @@ public class Util {
 		return p;
 	}
 
-	public static int[] parseIndexToSquare(int index_x, int index_y) {
-		int[] square = new int[2];
+	public static Square parseIndexToSquare(int index_x, int index_y) {
+		
+		Square s = new Square();
+		
 		if (index_x == 0) {
-			square[0] = 0;
+			s.setX(0);
 		}
 		if (index_y == 0) {
-			square[1] = 0;
+			s.setY(0);
 		}
 		if (index_x == 1) {
-			square[0] = 50;
+			s.setX(50);
 		}
 		if (index_y == 1) {
-			square[1] = 50;
+			s.setY(50);
 		}
 		if (index_x == 2) {
-			square[0] = 100;
+			s.setX(100);
 		}
 		if (index_y == 2) {
-			square[1] = 100;
+			s.setY(100);
 		}
 		if (index_x == 3) {
-			square[0] = 150;
+			s.setX(150);
 		}
 		if (index_y == 3) {
-			square[1] = 150;
+			s.setY(150);
 		}
 		if (index_x == 4) {
-			square[0] = 200;
+			s.setX(200);
 		}
 		if (index_y == 4) {
-			square[1] = 200;
+			s.setY(200);
 		}
 		if (index_x == 5) {
-			square[0] = 250;
+			s.setX(250);
 		}
 		if (index_y == 5) {
-			square[1] = 250;
+			s.setY(250);
 		}
 		if (index_x == 6) {
-			square[0] = 300;
+			s.setX(300);
 		}
 		if (index_y == 6) {
-			square[1] = 300;
+			s.setY(300);
 		}
-
 		if (index_x == 7) {
-			square[0] = 350;
+			s.setX(350);
 		}
 		if (index_y == 7) {
-			square[1] = 350;
+			s.setY(350);
 		}
 
-		return square;
+		return s;
 	}
 
 	public static Point parseIndexToPosition(int index_x, int index_y) {
