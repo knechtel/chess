@@ -11,8 +11,6 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
@@ -27,7 +25,6 @@ import br.com.chess.bean.Queen;
 import br.com.chess.bean.Square;
 import br.com.chess.bean.Tower;
 import br.com.chess.client.Client;
-import br.com.chess.protocolo.Message;
 
 
 

@@ -64,12 +64,14 @@ public class ComboBoxDemo extends JPanel {
 	static JFrame frame;
 	JLabel result;
 	String currentPattern;
+	@SuppressWarnings("rawtypes")
 	private DefaultComboBoxModel listModel = new DefaultComboBoxModel();
 	private Handler handler;
 	private Piece pieceMove;
 	private Point position;
 	private Point pointRemove;
 
+	@SuppressWarnings("unchecked")
 	public ComboBoxDemo(final Handler handler) {
 		this.handler = handler;
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -121,6 +123,7 @@ public class ComboBoxDemo extends JPanel {
 		JLabel patternLabel1 = new JLabel("Selecione uma pe�a para ");
 		JLabel patternLabel2 = new JLabel("voltar ao tabuleiro:");
 
+		@SuppressWarnings("rawtypes")
 		final JComboBox patternList = new JComboBox(listModel);
 		patternList.setEditable(true);
 

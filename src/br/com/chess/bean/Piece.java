@@ -1,6 +1,5 @@
 package br.com.chess.bean;
 
-import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 public class Piece implements Serializable {
