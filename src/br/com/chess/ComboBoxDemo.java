@@ -48,12 +48,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import br.com.chess.bean.Bishop;
-import br.com.chess.bean.Horse;
-import br.com.chess.bean.Piece;
-import br.com.chess.bean.Point;
-import br.com.chess.bean.Queen;
-import br.com.chess.bean.Tower;
+import br.com.chess.bean.*;
+import br.com.chess.bean.Rook;
 
 /* ComboBoxDemo2.java requires no other files. */
 public class ComboBoxDemo extends JPanel {
@@ -79,7 +75,7 @@ public class ComboBoxDemo extends JPanel {
 		Bishop b = null;
 		Horse h = null;
 		Queen q = null;
-		Tower t = null;
+		Rook t = null;
 		if (Session.isPlayerOne()) {
 			for (Piece piece : Session.getListForPromotionPlayerTwo()) {
 				if (piece instanceof Bishop) {
@@ -91,8 +87,8 @@ public class ComboBoxDemo extends JPanel {
 				} else if (piece instanceof Queen) {
 					q = (Queen) piece;
 					listModel.addElement(q);
-				} else if (piece instanceof Tower) {
-					t = (Tower) piece;
+				} else if (piece instanceof Rook) {
+					t = (Rook) piece;
 					listModel.addElement(t);
 				}
 			}
@@ -101,7 +97,7 @@ public class ComboBoxDemo extends JPanel {
 			Bishop b1 = null;
 			Horse h1 = null;
 			Queen q1 = null;
-			Tower t1 = null;
+			Rook t1 = null;
 			for (Piece piece : Session.getListForPromotionPlayerOne()) {
 				if (piece instanceof Bishop) {
 					b1 = (Bishop) piece;
@@ -112,8 +108,8 @@ public class ComboBoxDemo extends JPanel {
 				} else if (piece instanceof Queen) {
 					q1 = (Queen) piece;
 					listModel.addElement(q1);
-				} else if (piece instanceof Tower) {
-					t1 = (Tower) piece;
+				} else if (piece instanceof Rook) {
+					t1 = (Rook) piece;
 					listModel.addElement(t1);
 				}
 			}
@@ -135,7 +131,7 @@ public class ComboBoxDemo extends JPanel {
 				Bishop b = null;
 				Horse h = null;
 				Queen q = null;
-				Tower t = null;
+				Rook t = null;
 
 				if (piece instanceof Bishop) {
 					b = (Bishop) piece;
@@ -146,8 +142,8 @@ public class ComboBoxDemo extends JPanel {
 				} else if (piece instanceof Queen) {
 					q = (Queen) piece;
 
-				} else if (piece instanceof Tower) {
-					t = (Tower) piece;
+				} else if (piece instanceof Rook) {
+					t = (Rook) piece;
 
 				}
 
@@ -223,7 +219,7 @@ public class ComboBoxDemo extends JPanel {
 				
 				}
 				if (t != null) {
-					Piece tower = new Tower();
+					Piece tower = new Rook();
 					pieceMove = Session.getPieceMove();
 					tower.setX(pieceMove.getX());
 					tower.setY(pieceMove.getY());

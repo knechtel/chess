@@ -1,17 +1,12 @@
 package br.com.chess.teste;
 
 
-import br.com.chess.bean.Bishop;
-import br.com.chess.bean.Horse;
-import br.com.chess.bean.King;
-import br.com.chess.bean.Pawn;
-import br.com.chess.bean.Queen;
-import br.com.chess.bean.Tower;
-import br.com.chess.bean.Piece;
+import br.com.chess.bean.*;
+import br.com.chess.bean.Rook;
 
 public class Teste {
 	public static void main(String[] args) {
-		Piece piece = new Tower();
+		Piece piece = new Rook();
 
 		if (piece instanceof Bishop) {
 			System.out.println("eh meu amigo");
@@ -20,7 +15,7 @@ public class Teste {
 		} else if (piece instanceof Pawn) {
 		} else if (piece instanceof Queen) {
 
-		}else if (piece instanceof Tower) {
+		}else if (piece instanceof Rook) {
 			System.out.println("torre");
 		} else {
 			System.out.println("nao eh heim");

@@ -10,7 +10,7 @@ import br.com.chess.bean.Point;
 
 public class Session {
 
-	private static boolean enableFrame;
+	private static boolean enableFrame = true;
 	private static boolean firstTime;
 	private static Integer origin;
 	private static Integer destination;
@@ -24,6 +24,8 @@ public class Session {
 	private static Integer cont = 0;
 	private static Piece[][] cheessBoard = new Piece[8][8];
 	
+
+
 
 	public static Integer getCont() {
 		cont++;

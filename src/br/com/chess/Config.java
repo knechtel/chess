@@ -7,20 +7,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import br.com.chess.bean.Bishop;
-import br.com.chess.bean.Horse;
-import br.com.chess.bean.King;
-import br.com.chess.bean.Pawn;
-import br.com.chess.bean.Piece;
-import br.com.chess.bean.Queen;
-import br.com.chess.bean.Tower;
+import br.com.chess.bean.*;
+import br.com.chess.bean.Rook;
 
 public class Config {
 
 	public static void doConfigPlayerOne() {
 		Piece[][] chessboard =  Session.getCheessBoard();
 		{
-			Piece towerOne = new Tower();
+			Piece towerOne = new Rook();
 			towerOne.setX(5);
 			towerOne.setY(5);
 			towerOne.setEnemy(true);
@@ -62,7 +57,7 @@ public class Config {
 			horseTwo.setEnemy(true);
 			chessboard[6][0] = horseTwo;
 
-			Piece towerTwo = new Tower();
+			Piece towerTwo = new Rook();
 			towerTwo.setX(355);
 			towerTwo.setY(5);
 			towerTwo.setEnemy(true);
@@ -120,7 +115,7 @@ public class Config {
 
 		{
 
-			Piece towerOne = new Tower();
+			Piece towerOne = new Rook();
 			towerOne.setX(5);
 			towerOne.setY(355);
 			chessboard[0][7] = towerOne;
@@ -155,7 +150,7 @@ public class Config {
 			horseTwo.setY(355);
 			chessboard[6][7] = horseTwo;
 
-			Piece towerTwo = new Tower();
+			Piece towerTwo = new Rook();
 			towerTwo.setX(355);
 			towerTwo.setY(355);
 			chessboard[7][7] = towerTwo;
@@ -208,7 +203,7 @@ public class Config {
 	public static void doConfigPlayerTwo(){
 		Piece[][] chessboard =  Session.getCheessBoard();
 		{
-			Piece towerOne = new Tower();
+			Piece towerOne = new Rook();
 			towerOne.setX(5);
 			towerOne.setY(5);
 
@@ -250,7 +245,7 @@ public class Config {
 
 			chessboard[6][0] = horseTwo;
 
-			Piece towerTwo = new Tower();
+			Piece towerTwo = new Rook();
 			towerTwo.setX(355);
 			towerTwo.setY(5);
 
@@ -308,7 +303,7 @@ public class Config {
 
 		{
 
-			Piece towerOne = new Tower();
+			Piece towerOne = new Rook();
 			towerOne.setX(5);
 			towerOne.setY(355);
 			towerOne.setEnemy(true);
@@ -350,7 +345,7 @@ public class Config {
 			horseTwo.setEnemy(true);
 			chessboard[6][7] = horseTwo;
 
-			Piece towerTwo = new Tower();
+			Piece towerTwo = new Rook();
 			towerTwo.setX(355);
 			towerTwo.setY(355);
 			towerTwo.setEnemy(true);
@@ -498,7 +493,7 @@ public class Config {
 					g.drawImage(imgQueenBlack, piece2.getX(), piece2.getY(),
 							null);
 				}
-			} else if (piece2 instanceof Tower) {
+			} else if (piece2 instanceof Rook) {
 				if (Session.isPlayerOne()) {
 					g.drawImage(imgTowerWhite, piece2.getX(), piece2.getY(),
 							null);

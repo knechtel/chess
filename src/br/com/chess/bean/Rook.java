@@ -5,7 +5,7 @@ import java.util.List;
 
 import br.com.chess.Session;
 
-public class Tower extends Piece {
+public class Rook extends Piece {
 
 	private static final long serialVersionUID = 1L;
 

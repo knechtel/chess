@@ -16,14 +16,9 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import br.com.chess.bean.Bishop;
-import br.com.chess.bean.Horse;
-import br.com.chess.bean.King;
-import br.com.chess.bean.Pawn;
-import br.com.chess.bean.Piece;
-import br.com.chess.bean.Queen;
-import br.com.chess.bean.Square;
-import br.com.chess.bean.Tower;
+
+import br.com.chess.bean.*;
+import br.com.chess.bean.Rook;
 import br.com.chess.client.Client;
 
 
@@ -41,15 +36,16 @@ public class Main extends JPanel {
 
 	public Main(Client client) {
 		this.setClient(client);
-		playerOne = client.isPlayerOne();
+		//playerOne = client.isPlayerOne();
 		chessboard = new Piece[8][8];
-		Session.setPlayerOne(playerOne);
+		Session.setPlayerOne(true);
 		Session.setCheessBoard(chessboard);
-		
+		System.out.println("valor monitorado = "+playerOne);
 		if (playerOne) {
 			Config.doConfigPlayerOne();
 		} else {
-			Config.doConfigPlayerTwo();
+			Config.doConfigPlayerOne();
+		//	Config.doConfigPlayerOne();
 		}
 
 	}
@@ -180,7 +176,7 @@ public class Main extends JPanel {
 							g.drawImage(imgQueenBlack, piece.getX(),
 									piece.getY(), null);
 						}
-					} else if (piece instanceof Tower) {
+					} else if (piece instanceof Rook) {
 						if (piece.isEnemy()) {
 							g.drawImage(imgTowerWhite, piece.getX(),
 									piece.getY(), null);
@@ -289,7 +285,7 @@ public class Main extends JPanel {
 							g.drawImage(imgQueenBlack, piece.getX(),
 									piece.getY(), null);
 						}
-					} else if (piece instanceof Tower) {
+					} else if (piece instanceof Rook) {
 						if (!piece.isEnemy()) {
 							g.drawImage(imgTowerWhite, piece.getX(),
 									piece.getY(), null);

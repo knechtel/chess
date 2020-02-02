@@ -20,7 +20,7 @@ public class Server {
 					"Escolha a porta do servidor (Ex. 8082)", "8082"));
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null,
-					"Porta só aceita numeros! (Ex. 8082)");
+					"Porta s? aceita numeros! (Ex. 8082)");
 			System.exit(1);
 		}
 
